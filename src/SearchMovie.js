@@ -3,9 +3,10 @@ import Card from "./Card.js"
 export default function SearchMovie(){
     const [query, setQuery] = React.useState('')
     const [movies, setMovie] = React.useState([])
+    const api = process.env.REACT_APP_API
     const searchMovies = async (event) => {
         event.preventDefault()  
-        const url = `https://api.themoviedb.org/3/search/movie?api_key=d7de965f7cfc7a886ccc52154a671d8c&language=en-US&query=${query}&page=1&include_adult=false`
+        const url = `https://api.themoviedb.org/3/search/movie?api_key=${api}&language=en-US&query=${query}&page=1&include_adult=false`
         try {
             const res = await fetch(url);
             const data  = await res.json();
